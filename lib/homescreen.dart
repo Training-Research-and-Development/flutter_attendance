@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   double screenHeight = 0;
   double screenWidth = 0;
 
-  Color primary = const Color(0xFFBEADFA);
+  Color primary = const Color(0xFF614BC3);
 
   int currentIndex = 0;
 

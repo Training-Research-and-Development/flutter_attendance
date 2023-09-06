@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slide_to_act_reborn/slide_to_act_reborn.dart';
 
 class TodayScreen extends StatefulWidget {
   const TodayScreen({super.key});
@@ -11,6 +12,8 @@ class _TodayScreenState extends State<TodayScreen> {
   double screenHeight = 0;
   double screenWidth = 0;
 
+  Color primary = const Color(0xFF614BC3);
+
   @override
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
@@ -18,21 +21,163 @@ class _TodayScreenState extends State<TodayScreen> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 32),
+              margin: const EdgeInsets.only(top: 32),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Wellcome.",
+                "Wellcome",
                 style: TextStyle(
                   color: Colors.black54,
                   fontFamily: "nexaregular",
                   fontSize: screenWidth / 20,
                 ),
               ),
-            )
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Employee",
+                style: TextStyle(
+                  fontFamily: "NexaBold",
+                  fontSize: screenWidth / 18,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 32),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Today's Status",
+                style: TextStyle(
+                  fontFamily: "nexaregular",
+                  fontSize: screenWidth / 18,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 12, bottom: 32),
+              height: 150,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(2, 2)),
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Check In",
+                          style: TextStyle(
+                            fontFamily: "nexaregular",
+                            fontSize: screenWidth / 20,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        Text(
+                          "--/--",
+                          style: TextStyle(
+                            fontFamily: "NexaBold",
+                            fontSize: screenWidth / 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Check Out",
+                          style: TextStyle(
+                            fontFamily: "nexaregular",
+                            fontSize: screenWidth / 20,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        Text(
+                          "--/--",
+                          style: TextStyle(
+                            fontFamily: "NexaBold",
+                            fontSize: screenWidth / 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: RichText(
+                text: TextSpan(
+                  text: "9",
+                  style: TextStyle(
+                    color: primary,
+                    fontSize: screenWidth / 18,
+                    fontFamily: "NexaBold",
+                  ),
+                  children: [
+                    TextSpan(
+                      text: " Sep 2023",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: screenWidth / 20,
+                        fontFamily: "NexaBold",
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "12:00:01 PM",
+                style: TextStyle(
+                  fontFamily: "nexaregular",
+                  fontSize: screenWidth / 20,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 24),
+              child: Builder(builder: (context) {
+                final GlobalKey<SlideActionState> key = GlobalKey();
+
+                return SlideAction(
+                  text: "Slide to Check In",
+                  textStyle: TextStyle(
+                    color: Colors.black54,
+                    fontSize: screenWidth / 20,
+                    fontFamily: "nexaregular",
+                  ),
+                  outerColor: Colors.white,
+                  innerColor: primary,
+                  key: key,
+                  onSubmit: (){
+                    key.currentState!.reset();
+                  },
+                );
+              },),
+            ),
           ],
         ),
       ),
