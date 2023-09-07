@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.5.0"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -357,6 +365,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  slide_to_act_reborn:
+    dependency: "direct main"
+    description:
+      name: slide_to_act_reborn
+      sha256: d345593d171d109d4dace919812c5b2c7c1b7e5258451e6cfc8866cb0086cd9d
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   source_span:
     dependency: transitive
     description:
