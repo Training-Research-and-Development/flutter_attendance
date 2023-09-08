@@ -1,6 +1,8 @@
 import 'package:attendanceapp/calendarscreen.dart';
+import 'package:attendanceapp/model/user.dart';
 import 'package:attendanceapp/profilescreen.dart';
 import 'package:attendanceapp/todayscreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -26,6 +28,24 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+
+    getId();
+  }
+
+  void getId() async{
+    QuerySnapshot snap = await FirebaseFirestore.instance
+        .collection("Employee")
+        .where("id", isEqualTo: User.employeeId)
+        .get();
+
+    setState(() {
+      User.id = snap.docs[0].id;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
@@ -33,10 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
-        children: const [
-          CalendarScreen(),
-          TodayScreen(),
-          ProfileScreen(),
+        children: [
+          new CalendarScreen(),
+          new TodayScreen(),
+          new ProfileScreen(),
         ],
       ),
       bottomNavigationBar: Container(
